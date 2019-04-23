@@ -7,11 +7,17 @@
 import Foundation
 import UIKit
 
+protocol SideBarDelegate: AnyObject {
+    func buttonDidTap(value: Int)
+}
+
 class sideBarMenuController: UIViewController{
     
     var arrayOfNonselectableItems:[Int] = []
     var messageObject = ""
     var value = 100
+    
+    weak var delegate: SideBarDelegate?
     
     @IBOutlet weak var closeMenuButton: UIButton!
 
@@ -36,6 +42,7 @@ class sideBarMenuController: UIViewController{
         return 40
     }
     @IBAction func closeWindow(_ sender: Any) {
+        delegate?.buttonDidTap(value: value)
         closeSidebar()
     }
 }

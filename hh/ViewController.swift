@@ -13,6 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? sideBarMenuController
+        menuVC.delegate = self
     }
 
     @IBAction func showAction(_ sender: Any) {
@@ -27,6 +28,14 @@ class ViewController: UIViewController {
         }
         
     }
+    
+}
+extension ViewController: SideBarDelegate {
+    func buttonDidTap(value: Int) {
+        print("Did tab button: \(value)")
+        access()
+    }
+    
     
 }
 
